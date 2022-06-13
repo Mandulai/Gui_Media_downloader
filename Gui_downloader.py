@@ -4,7 +4,7 @@
 # Автор: --- неизвестен ---
 
 # from ast import Lambda
-from msilib.schema import Font
+# from msilib.schema import Font
 from tkinter import * # Импортировать библиотеку tkinter
 import tkinter as tk
 # import tkinter as text
