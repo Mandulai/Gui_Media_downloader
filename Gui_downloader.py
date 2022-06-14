@@ -3,15 +3,15 @@
 # Дата: 2020-05-01
 # Автор: --- неизвестен ---
 
-# from ast import Lambda
-# from msilib.schema import Font
+from ast import Lambda
+from msilib.schema import Font
 from tkinter import * # Импортировать библиотеку tkinter
 import tkinter as tk
-# import tkinter as text
-# from tkinter import font
-# from trace import Trace
+import tkinter as text
+from tkinter import font
+from trace import Trace
 from turtle import clear
-# from webbrowser import BackgroundBrowser
+from webbrowser import BackgroundBrowser
 import win32clipboard as clipboards 
 # import time
 import pafy
@@ -145,19 +145,19 @@ def download(streams, path_save, streams_index,vibor_media_type): # Функци
         for vibor in streams:
             variants[counter] = vibor
             counter += 1
-                       
         get_text('Качаем поток...'+str(streams_index))
  
         # Проверяем качали ли мы уже этот файл
-        media_extension = str(variants[streams_index]) # Берем выбранный поток
-        media_extension = media_extension.split('@')[0].split(':')[1] # Выдираем расширение
-        file_name = v.title # Узнаем имя трека
+        media_ext = str(variants[streams_index]) # Берем выбранный поток
+        media_extension = media_ext.split('@')[0].split(':')[1] # Выдираем расширение
+        file_name = str(v.title) # Узнаем имя трека
+        file_name = file_name.replace("/", "_") # Заменяем спец символы
         media_files = f'{file_name}.{media_extension}' # получем имя файла + расширение
         path_file = f'{path_save}\{media_files}' # получаем путь + имя файла + расширение
         audio_path_save =f'{path_save}\{file_name}.mp3' # получаем тоже самое для сохраненного аудио файла
                 
         if os.path.exists(path_file) or os.path.exists(audio_path_save) == True:
-            get_text('Мы качали уже этот файл...')
+            get_text('Отбой!..Мы качали уже этот файл...')
         else:
             # Качаем файл
             media_file_output = streams[streams_index - 1].download(filepath=f'{path_save}')
@@ -167,7 +167,8 @@ def download(streams, path_save, streams_index,vibor_media_type): # Функци
             if int(vibor_media_type) == 1: 
                 audio_extension = str(variants[streams_index])
                 audio_extension = audio_extension.split('@')[0].split(':')[1]
-                file_name = v.title
+                file_name = str(v.title) # Узнаем имя трека
+                file_name = file_name.replace("/", "_") # Заменяем спец символы
                 music_file = f'{file_name}.{audio_extension}'
                 base = os.path.splitext(music_file)[0]
                 os.chdir(path=path_save)
