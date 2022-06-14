@@ -3,17 +3,10 @@
 # Дата: 2020-05-01
 # Автор: --- неизвестен ---
 
-from ast import Lambda
-from msilib.schema import Font
+
 from tkinter import * # Импортировать библиотеку tkinter
 import tkinter as tk
-import tkinter as text
-from tkinter import font
-from trace import Trace
-from turtle import clear
-from webbrowser import BackgroundBrowser
 import win32clipboard as clipboards 
-# import time
 import pafy
 import os, sys, getpass
 
